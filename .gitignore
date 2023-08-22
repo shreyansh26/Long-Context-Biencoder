@@ -1,3 +1,5 @@
 __pycache__
 long_biencoder_1m
 long_biencoder_100k
+bert-base-1024-biencoder-6M-pairs/
+bert-base-1024-biencoder-64M-pairs/
