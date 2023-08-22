@@ -52,7 +52,7 @@ class MyModel():
         return torch.vstack(sentence_embeddings)
 
 model = BertModel.from_pretrained('mosaicml/mosaic-bert-base-seqlen-1024', trust_remote_code=True).to("cuda")
-model.load_state_dict(torch.load('/home/shreyansh/long_context_biencoder_v2/models/bert-base-1024-biencoder-64M-pairs/pytorch_model.bin'))
+model.load_state_dict(torch.load('/home/shreyansh/long_context_biencoder_v2/models/bert-base-1024-biencoder-6M-pairs/pytorch_model.bin'))
 tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
 
 model = AutoModelForSentenceEmbedding(model, tokenizer)
@@ -60,7 +60,7 @@ encoded_input = tokenizer("I am a boy", padding=True, truncation=True, max_lengt
 embb1 = model(**encoded_input)
 print(embb1.shape)
 
-model2 = AutoModel.from_pretrained("/home/shreyansh/long_context_biencoder_v2/models/bert-base-1024-biencoder-64M-pairs", trust_remote_code=True)
+model2 = AutoModel.from_pretrained("/home/shreyansh/long_context_biencoder_v2/models/bert-base-1024-biencoder-6M-pairs", trust_remote_code=True)
 
 model2 = AutoModelForSentenceEmbedding(model2, tokenizer)
 encoded_input = tokenizer("I am a boy", padding=True, truncation=True, max_length=1024, return_tensors='pt').to("cuda")
@@ -68,3 +68,12 @@ embb2 = model2(**encoded_input)
 print(embb2.shape)
 
 print(torch.allclose(embb1, embb2, atol=1e-4))
+
+# model3 = AutoModel.from_pretrained("shreyansh26/bert-base-1024-biencoder-64M-pairs", trust_remote_code=True)
+
+# model3 = AutoModelForSentenceEmbedding(model3, tokenizer)
+# encoded_input = tokenizer("I am a boy", padding=True, truncation=True, max_length=1024, return_tensors='pt').to("cuda")
+# embb3 = model3(**encoded_input)
+# print(embb3.shape)
+
+# print(torch.allclose(embb1, embb3, atol=1e-4))

@@ -52,7 +52,7 @@ class MyModel():
         return torch.vstack(sentence_embeddings)
 
 model = BertModel.from_pretrained('mosaicml/mosaic-bert-base-seqlen-1024', trust_remote_code=True).to("cuda")
-model.load_state_dict(torch.load('/home/shreyansh/long_context_biencoder_v2/models/bert-base-1024-biencoder-6M-pairs/pytorch_model.bin'))
+model.load_state_dict(torch.load('/home/shreyansh/long_context_biencoder_v2/models/bert-base-1024-biencoder-64M-pairs/pytorch_model.bin'))
 tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
 
 model = AutoModelForSentenceEmbedding(model, tokenizer)
@@ -69,4 +69,4 @@ model = AutoModelForSentenceEmbedding(model, tokenizer)
 
 model_eval = MyModel(model, tokenizer)
 evaluation = MTEB(tasks=["CQADupstackEnglishRetrieval", "DBPedia", "MSMARCO", "QuoraRetrieval"])
-results = evaluation.run(model_eval, output_folder=f"results/6M_results", eval_splits=["test"])
+results = evaluation.run(model_eval, output_folder=f"results/64M_results", eval_splits=["test"])
