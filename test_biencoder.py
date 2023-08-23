@@ -38,7 +38,7 @@ def get_embeddings(text):
 
     return sentence_embeddings
 
-query_text = "Is there a place which I can call heaven on earth"
+query_text = "Kerala is a state in India"
 
 long_text = open('text.txt').read()
 # long_text = "My wifi is not working"
