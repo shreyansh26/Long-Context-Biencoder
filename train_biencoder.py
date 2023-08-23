@@ -242,7 +242,7 @@ def main():
     args = parser.parse_args()
     config = {
         "lr": 2e-5, 
-        "num_steps": 1000000, 
+        "num_steps": 100000, 
         "seed": 42, 
         "batch_size": 64, 
         "log_steps": 500,
