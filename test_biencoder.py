@@ -24,9 +24,7 @@ class AutoModelForSentenceEmbedding(nn.Module):
         input_mask_expanded = attention_mask.unsqueeze(-1).expand(token_embeddings.size()).float()
         return torch.sum(token_embeddings * input_mask_expanded, 1) / torch.clamp(input_mask_expanded.sum(1), min=1e-9)
 
-model = BertModel.from_pretrained('mosaicml/mosaic-bert-base-seqlen-1024', trust_remote_code=True).to("cuda")
-model.load_state_dict(torch.load('/home/shreyansh/long_context_biencoder_v2/long_biencoder/100000/pytorch_model.bin'))
-# model = AutoModel.from_pretrained('bert-base-uncased').to("cuda")
+model = AutoModel.from_pretrained("/home/shreyansh/long_context_biencoder_v2/models/bert-base-1024-biencoder-6M-pairs", trust_remote_code=True).to("cuda")
 tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
 
 model = AutoModelForSentenceEmbedding(model, tokenizer)
