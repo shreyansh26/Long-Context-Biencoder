@@ -1,4 +1,8 @@
-# bert-base-1024-biencoder-6M-pairs
+# Long Context Biencoder - bert-base-1024-biencoder-6M-pairs
+
+****
+Model on Huggingface Hub - [https://huggingface.co/shreyansh26/bert-base-1024-biencoder-6M-pairs](https://huggingface.co/shreyansh26/bert-base-1024-biencoder-6M-pairs)
+****
 
 A long context biencoder based on [MosaicML's BERT pretrained on 1024 sequence length](https://huggingface.co/mosaicml/mosaic-bert-base-seqlen-1024). This model maps sentences & paragraphs to a 768 dimensional dense vector space 
 and can be used for tasks like clustering or semantic search.
@@ -58,10 +62,10 @@ print(embeddings.shape)
 This model has been trained on 6.4M randomly sampled pairs of sentences/paragraphs from the same training set that Sentence Transformers models use. Details of the
 training set [here](https://huggingface.co/sentence-transformers/all-mpnet-base-v2#training-data). 
 
-* Training script - train_biencoder.py
-* Data Utils (important) - data_utils.py
-* Inference/Testing - test_biencoder.py
-* Benchmarking scripts - models/evaluate_models_mteb.py
+* Training script - [train_biencoder.py](train_biencoder.py)
+* Data Utils (important) - [data_utils.py](data_utils.py)
+* Inference/Testing - [test_biencoder.py](test_biencoder.py)
+* Benchmarking scripts - [models/evaluate_models_mteb.py](models/evaluate_models_mteb.py)
 
 ### Evaluations
 
