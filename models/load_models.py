@@ -68,6 +68,7 @@ embb2 = model2(**encoded_input)
 print(embb2.shape)
 
 print(torch.allclose(embb1, embb2, atol=1e-4))
+# True
 
 # model3 = AutoModel.from_pretrained("shreyansh26/bert-base-1024-biencoder-64M-pairs", trust_remote_code=True)
 
