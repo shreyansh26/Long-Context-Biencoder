@@ -64,7 +64,7 @@ print(embeddings.shape)
 
 ### Training
 
-This model has been trained on 6.4M randomly sampled pairs of sentences/paragraphs from the same training set that Sentence Transformers models use. Details of the
+The models have been trained on 6.4M and 64M randomly sampled pairs of sentences/paragraphs from the same training set that Sentence Transformers models use. Details of the
 training set [here](https://huggingface.co/sentence-transformers/all-mpnet-base-v2#training-data). 
 
 * Training script - [train_biencoder.py](train_biencoder.py)
