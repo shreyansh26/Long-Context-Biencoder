@@ -1,16 +1,18 @@
-# Long Context Biencoder - bert-base-1024-biencoder-6M-pairs
+# Long Context Biencoder
 
 ****
-Model on Huggingface Hub - [https://huggingface.co/shreyansh26/bert-base-1024-biencoder-6M-pairs](https://huggingface.co/shreyansh26/bert-base-1024-biencoder-6M-pairs)
+Models on Huggingface Hub  
+* [bert-base-1024-biencoder-6M-pairs](https://huggingface.co/shreyansh26/bert-base-1024-biencoder-6M-pairs)
+* [bert-base-1024-biencoder-64M-pairs](https://huggingface.co/shreyansh26/bert-base-1024-biencoder-64M-pairs)
 ****
 
-A long context biencoder based on [MosaicML's BERT pretrained on 1024 sequence length](https://huggingface.co/mosaicml/mosaic-bert-base-seqlen-1024). This model maps sentences & paragraphs to a 768 dimensional dense vector space 
+This repository has the code for training, inference and evaluation of long context biencoders based on [MosaicML's BERT pretrained on 1024 sequence length](https://huggingface.co/mosaicml/mosaic-bert-base-seqlen-1024). This model maps sentences & paragraphs to a 768 dimensional dense vector space 
 and can be used for tasks like clustering or semantic search.
 
 ## Usage
 
 ### Download the model and related scripts
-```git clone https://huggingface.co/shreyansh26/bert-base-1024-biencoder-6M-pairs```
+```git clone https://huggingface.co/shreyansh26/bert-base-1024-biencoder-6M-pairs``` / ```git clone https://huggingface.co/shreyansh26/bert-base-1024-biencoder-64M-pairs```
 
 ### Inference
 ```python
@@ -69,4 +71,4 @@ training set [here](https://huggingface.co/sentence-transformers/all-mpnet-base-
 
 ### Evaluations
 
-We ran the model on a few retrieval based benchmarks (CQADupstackEnglishRetrieval, DBPedia, MSMARCO, QuoraRetrieval) and the results are [here](https://github.com/shreyansh26/Long-Context-Biencoder/tree/master/models/results/6M_results).
+We ran the model on a few retrieval based benchmarks (CQADupstackEnglishRetrieval, DBPedia, MSMARCO, QuoraRetrieval) and the results are [here](https://github.com/shreyansh26/Long-Context-Biencoder/tree/master/models/results/).
