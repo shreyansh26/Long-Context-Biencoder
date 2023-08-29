@@ -134,7 +134,8 @@ def training_function(config, args):
     set_seed(seed)
     accelerator.print(f"Batch size: {batch_size}")
     train_dataloader_cols2, train_dataloader_cols3, weights_cols2, weights_cols3 = get_dataloaders(config, accelerator, batch_size)
-    # Instantiate the model (we build the model here so that the seed also control new weights initialization)
+
+    # Model and Tokenizer
     tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
     model = AutoModelForSentenceEmbedding("mosaicml/mosaic-bert-base-seqlen-1024", tokenizer, accelerator)
     # Instantiate optimizer
@@ -147,11 +148,9 @@ def training_function(config, args):
         num_training_steps=config["num_steps"]
     )
 
-    # Prepare everything
-    # There is no specific order to remember, we just need to unpack the objects in the same order we gave them to the
-    # prepare method.
     cross_entropy_loss = nn.CrossEntropyLoss()
 
+    # Accelerator prepare
     model, optimizer, train_dataloader_cols2, train_dataloader_cols3, lr_scheduler = accelerator.prepare(
         model, optimizer, train_dataloader_cols2, train_dataloader_cols3, lr_scheduler
     )
@@ -172,7 +171,7 @@ def training_function(config, args):
             embeddings_a = model(**text1.to(accelerator.device))
             embeddings_b = model(**text2.to(accelerator.device))
 
-            ### Compute similarity scores 512 x 512
+            ### Compute similarity scores
             scores = torch.mm(embeddings_a, embeddings_b.transpose(0, 1)) * config["scale"]
         
             ### Compute cross-entropy loss
@@ -194,7 +193,7 @@ def training_function(config, args):
 
             embeddings_b = torch.cat([embeddings_b1, embeddings_b2])
 
-            ### Compute similarity scores 512 x 1024
+            ### Compute similarity scores
             scores = torch.mm(embeddings_a, embeddings_b.transpose(0, 1)) * config["scale"]
         
             ### Compute cross-entropy loss
@@ -216,7 +215,7 @@ def training_function(config, args):
             optimizer.zero_grad()
             torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
 
-        #Save model
+        # Save model
         if (step+1) % config["log_steps"] == 0:
             output_path = os.path.join(config["output_dir"], str(step+1))
             # Use accelerator.print to print only on the main process.

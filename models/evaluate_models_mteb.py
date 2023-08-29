@@ -57,16 +57,7 @@ tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
 
 model = AutoModelForSentenceEmbedding(model, tokenizer)
 
-# sentences = ["I am a boy"] * 1638400
-# encoder = MyModel(model, tokenizer)
-# embbs = encoder.encode(sentences, batch_size=16384)
-# print(embbs.shape)
-# print(embbs[0].shape)
-
-# encoded_input = tokenizer("I am a boy", padding=True, truncation=True, max_length=1024, return_tensors='pt').to("cuda")
-# embb = model(**encoded_input)
-# print(embb.shape)
-
 model_eval = MyModel(model, tokenizer)
+
 evaluation = MTEB(tasks=["CQADupstackEnglishRetrieval", "DBPedia", "MSMARCO", "QuoraRetrieval"])
 results = evaluation.run(model_eval, output_folder=f"results/64M_results", eval_splits=["test"])
