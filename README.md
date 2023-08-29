@@ -12,7 +12,10 @@ and can be used for tasks like clustering or semantic search.
 ## Usage
 
 ### Download the model and related scripts
-```git clone https://huggingface.co/shreyansh26/bert-base-1024-biencoder-6M-pairs``` / ```git clone https://huggingface.co/shreyansh26/bert-base-1024-biencoder-64M-pairs```
+```
+git clone https://huggingface.co/shreyansh26/bert-base-1024-biencoder-6M-pairs
+git clone https://huggingface.co/shreyansh26/bert-base-1024-biencoder-64M-pairs
+```
 
 ### Inference
 ```python
