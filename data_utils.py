@@ -90,6 +90,7 @@ def get_data_paths_and_indices(config):
 
     k = 0
     for _, data in enumerate(data_config):
+        # Use only files in `num_cols.json`
         if data['name'] in num_cols and num_cols[data['name']] == 2:
             filepaths_cols2.append(os.path.join(os.path.expanduser(config["data_folder"]), data['name']))
             dataset_indices_cols2.extend([k]*data['weight'])
@@ -97,6 +98,7 @@ def get_data_paths_and_indices(config):
     
     k = 0
     for _, data in enumerate(data_config):
+        # Use only files in `num_cols.json`
         if data['name'] in num_cols and num_cols[data['name']] == 3:
             filepaths_cols3.append(os.path.join(os.path.expanduser(config["data_folder"]), data['name']))
             dataset_indices_cols3.extend([k]*data['weight'])
