@@ -1,17 +1,3 @@
-# coding=utf-8
-# Copyright 2021 The HuggingFace Inc. team. All rights reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 import os
 import argparse
 import random
@@ -28,23 +14,6 @@ from torch import nn
 from data_utils import get_dataset_for_dataloaders
 from mosaic_bert import BertModel
 from tqdm import tqdm
-
-########################################################################
-# This is a fully working simple example to use Accelerate
-#
-# This example trains a Bert base model on GLUE MRPC
-# in any of the following settings (with the same script):
-#   - single CPU or single GPU
-#   - multi GPUS (using PyTorch distributed mode)
-#   - (multi) TPUs
-#   - fp16 (mixed-precision) or fp32 (normal precision)
-#
-# To run it in each of these various modes, follow the instructions
-# in the readme for examples:
-# https://github.com/huggingface/accelerate/tree/main/examples
-#
-########################################################################
-
 
 MAX_GPU_BATCH_SIZE = 32
 
